@@ -443,6 +443,17 @@ function Inspector(controller) {
       }
 
       //
+      // labels
+      //
+
+      if (torrents.length < 1) {
+        str = none;
+      } else {
+        str = torrents[0].getLabels().join(", ");
+      }
+      setTextContent(e.labels_lb, str);
+
+      //
       //  origin
       //
 
@@ -914,6 +925,7 @@ function Inspector(controller) {
       data.elements.privacy_lb = $('#inspector-info-privacy')[0];
       data.elements.origin_lb = $('#inspector-info-origin')[0];
       data.elements.comment_lb = $('#inspector-info-comment')[0];
+      data.elements.labels_lb = $('#inspector-info-labels')[0];
       data.elements.name_lb = $('#torrent_inspector_name')[0];
 
       // force initial 'N/A' updates on all the pages

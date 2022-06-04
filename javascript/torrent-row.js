@@ -116,6 +116,14 @@ TorrentRendererHelper.formatETA = function (t) {
   return 'ETA: ' + Transmission.fmt.timeInterval(eta);
 };
 
+TorrentRendererHelper.formatLabels = function (t) {
+  if (t.getLabels().length) {
+    return "🏷 " + t.getLabels().join(", ");
+  } else {
+    return "";
+  }
+};
+
 /****
  *****
  *****
@@ -124,13 +132,16 @@ TorrentRendererHelper.formatETA = function (t) {
 function TorrentRendererFull() {}
 TorrentRendererFull.prototype = {
   createRow: function () {
-    let root, name, peers, progressbar, details, image, button;
+    let root, name, labels, peers, progressbar, details, image, button;
 
     root = document.createElement('li');
     root.className = 'torrent';
 
     name = document.createElement('div');
     name.className = 'torrent_name';
+
+    labels = document.createElement('div');
+    labels.className = 'torrent_labels';
 
     peers = document.createElement('div');
     peers.className = 'torrent_peer_details';
@@ -145,12 +156,14 @@ TorrentRendererFull.prototype = {
     button.appendChild(image);
 
     root.appendChild(name);
+    root.appendChild(labels);
     root.appendChild(peers);
     root.appendChild(button);
     root.appendChild(progressbar.element);
     root.appendChild(details);
 
     root._name_container = name;
+    root._labels_container = labels;
     root._peer_details_container = peers;
     root._progress_details_container = details;
     root._progressbar = progressbar;
@@ -304,6 +317,9 @@ TorrentRendererFull.prototype = {
     // name
     setTextContent(root._name_container, t.getName());
 
+    // labels
+    setTextContent(root._labels_container, TorrentRendererHelper.formatLabels(t));
+
     // progressbar
     TorrentRendererHelper.renderProgressbar(controller, t, root._progressbar);
 
@@ -343,14 +359,19 @@ TorrentRendererCompact.prototype = {
     name = document.createElement('div');
     name.className = 'torrent_name compact';
 
+    labels = document.createElement('div');
+    labels.className = 'torrent_labels compact';
+
     root = document.createElement('li');
     root.appendChild(progressbar.element);
     root.appendChild(details);
     root.appendChild(name);
+    root.appendChild(labels);
     root.className = 'torrent compact';
     root._progressbar = progressbar;
     root._details_container = details;
     root._name_container = name;
+    root._labels_container = labels;
     return root;
   },
 
@@ -398,6 +419,10 @@ TorrentRendererCompact.prototype = {
     let e = root._name_container;
     $(e).toggleClass('paused', is_stopped);
     setTextContent(e, t.getName());
+
+    // labels
+    e = root._labels_container;
+    setTextContent(e, TorrentRendererHelper.formatLabels(t));
 
     // peer details
     const has_error = t.getError() !== Torrent._ErrNone;
