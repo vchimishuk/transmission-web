@@ -1,0 +1,25 @@
+NAME
+    transmission-web is a fork of official Transmission web client before UI
+    redesign.
+
+    In 2020 Transmission Web client has been redesigned. This fork saves
+    original client look and becomes just another alternative web client. You
+    can use it if your prefer original UI over redesigned version, just like
+    me. Be aware that this client lacks of some features of mainline client
+    version and outdated in some sense. I do not have any plans to backport
+    features from upstream, at least for now. Anyway, if you find some feature
+    is missing or you would like something to be backported from upstream just
+    let me know.
+
+    See https://github.com/transmission/transmission/tree/main/web for official
+    Transmission Web client.
+
+AUTHORS
+    Transmission authors.
+    Viacheslav Chimishuk <vchimishuk@yandex.ru>
+
+COPYING
+    This program is released under the GNU General Public License version 3 or
+    later, which is distributed in the COPYING file. You should have received a
+    copy of the GNU General Public License along with this program. If not,
+    see <http://www.gnu.org/licenses/>.
