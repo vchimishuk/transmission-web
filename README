@@ -1,6 +1,6 @@
 NAME
-    transmission-web is a fork of official Transmission web client before UI
-    redesign.
+    transmission-web is a fork of official Transmission web client before
+    2020 UI redesign.
 
     In 2020 Transmission Web client has been redesigned. This fork saves
     original client look and becomes just another alternative web client. You

@@ -1,0 +1,12 @@
+Source: transmission-web
+Section: net
+Priority: optional
+Maintainer: Viacheslav Chimishuk <vchimishuk@yandex.ru>
+Build-Depends: debhelper (>= 8.0.0), git
+Standards-Version: 3.9.4
+Homepage: https://github.com/vchimishuk/transmission-web
+
+Package: transmission-web
+Architecture: all
+Recommends: transmission
+Description: Fork of official Transmission web client before 2020 UI redesign.
