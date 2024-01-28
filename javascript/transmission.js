@@ -162,8 +162,10 @@ Transmission.prototype = {
   setupSearchBox: function () {
     const tr = this;
     const search_box = $('#torrent_search');
-    search_box.bind('keyup click', function () {
-      tr.setFilterText(this.value);
+    search_box.bind('keyup', function (e) {
+      if (e.key == 'Enter') {
+        tr.setFilterText(this.value);
+      }
     });
     if (!$.browser.safari) {
       search_box.addClass('blur');
