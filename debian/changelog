@@ -1,3 +1,9 @@
+transmission-web (2.9.2) stable; urgency=low
+
+  * Support hyphen sign in label names.
+
+ -- Viacheslav Chimishuk <vchimishuk@yandex.ru>  Sun, 30 Jun 2024 19:49:00 +0300
+
 transmission-web (2.9.1) stable; urgency=low
 
   * Apply search filter on Enter pressed instead of text change.
