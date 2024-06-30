@@ -1677,9 +1677,9 @@ Transmission.prototype = {
 
     var filter_text;
     var labels;
-    var m = /^labels:([\w,]*)(.*)$/.exec(this.filterText);
+    var m = /^labels:(([\w-]+,?)+)(.*)$/.exec(this.filterText);
     if (m) {
-      filter_text = m[2].trim();
+      filter_text = m[3].trim();
       labels = m[1].split(",");
     } else {
       filter_text = this.filterText;
